@@ -78,3 +78,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 views/public/legit.js
+config/tos.example.md
+config/config.example.js
