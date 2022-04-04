@@ -1,6 +1,9 @@
-const ws = require("uws");
+const uWebSockets = require('uWebSockets.js');
+
+//const ws = require("uws");
 const Pixel = require("../models/pixel");
 const {SocketController} = require("./Sockets/SocketController");
+const port = 87;
 
 function WebsocketServer(app, httpServer) {
     app.logger.log('Websocket Server', "Attached to HTTP server.");
@@ -8,7 +11,33 @@ function WebsocketServer(app, httpServer) {
     class SocketServer {
 
         constructor() {
-            this.server = new ws.Server({server: httpServer});
+            this.app = new uWebSockets.App({server: httpServer}).ws('/*', {
+                compression: uWebSockets.SHARED_COMPRESSOR,
+                maxPayloadLength: 16 * 1024 * 1024,
+                idleTimeout: 10,
+                open: (ws) => {
+                    console.log('A WebSocket connected!');
+                    this.socketController.register(ws);
+                },
+                message: (ws, message, isBinary) => {
+                    /* Ok is false if backpressure was built up, wait for drain */
+                    //let ok = ws.send(message, isBinary);
+                },
+                drain: (ws) => {
+                    console.log('WebSocket backpressure: ' + ws.getBufferedAmount());
+                },
+                close: (ws, code, message) => {
+                    console.log('WebSocket closed');
+                }
+            }).any('/*', (res, req) => {
+                res.end('Nothing to see here!');
+            }).listen(port, (token) => {
+                if (token) {
+                    console.log('Listening to port ' + port);
+                } else {
+                    console.log('Failed to listen to port ' + port);
+                }
+            });
             setInterval(() => this.checkUserCount(), 1000);
 
             this.socketController = new SocketController();
@@ -28,10 +57,6 @@ function WebsocketServer(app, httpServer) {
                     });
                 });
                 next();
-            });
-
-            this.server.on("connection", socket => {
-                this.socketController.register(socket);
             });
         }
 
