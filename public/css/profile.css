@@ -3,7 +3,7 @@ body {
 }
 
 .profile-header {
-  background: #fff url("/api/board-image") no-repeat fixed center;
+  background: rgb(32, 32, 32) url("/api/board-image") no-repeat fixed center;
   image-rendering: optimizeSpeed;             /*                     */
   image-rendering: -moz-crisp-edges;          /* Firefox             */
   image-rendering: -o-crisp-edges;            /* Opera               */
@@ -36,6 +36,14 @@ body {
   pointer-events: none;
 }
 
+nav.navbar:not(.navbar-inverse) {
+  background: rgba(41, 41, 41, 0.9)!important;
+}
+
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+  background: rgba(41, 41, 41, 0.9)!important;
+}
+
 .container {
   padding: 0 20px;
 }
@@ -44,7 +52,8 @@ body {
   padding: 0 60px 60px;
   max-width: 1000px;
   width: 100%;
-  background: #fff;
+  background: rgb(41, 41, 41);
+  color: #999;
   box-shadow: 0 20px 40px 5px rgba(0,0,0,0.3);
   z-index: 51;
   position: relative;
@@ -73,7 +82,8 @@ body {
   position: relative;
   pointer-events: none;
   text-align: center;
-  background: #f8f9fd;
+  background: rgb(41, 41, 41);
+  color: #999;
   border-bottom: 1px solid #efefef;
   margin: 0 -60px;
   border-radius: 5px 5px 0 0;
@@ -132,10 +142,10 @@ body {
 }
 
 .profile-info .avatar {
-  background: #fff;
+  background: #999;
   width: 175px;
   height: 175px;
-  color: #009ef7;
+  color: #54c0ff;
   border-radius: 50%;
   text-align: center;
   display: flex;

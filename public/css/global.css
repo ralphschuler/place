@@ -74,7 +74,7 @@ body:not([data-user-is-mod=true]) .actions-ctn, body:not([data-user-is-admin=tru
 
 .subdetails > div > span {
   display: block;
-  color: #555;
+  color: rgb(202, 202, 202);
 }
 
 .subdetails > div > span.value {
@@ -87,7 +87,7 @@ body:not([data-user-is-mod=true]) .actions-ctn, body:not([data-user-is-admin=tru
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: #888;
+  color: rgb(201, 201, 201);
 }
 
 #floating-alert-ctn {
@@ -119,7 +119,8 @@ body:not([data-user-is-mod=true]) .actions-ctn, body:not([data-user-is-admin=tru
   display: inline-block;
   margin-left: -3px;
   margin-right: 1px;
-  color: #555;
+  color: rgb(174, 174, 174);
+  background: rgb(41, 41, 41);
 }
 
 .dropdown-inline span.caret {
@@ -130,12 +131,13 @@ body:not([data-user-is-mod=true]) .actions-ctn, body:not([data-user-is-admin=tru
   padding: 5px;
   margin-left: -3px;
   margin-right: -5px;
+  background: rgb(41, 41, 41);
 }
 
 /* User Display Block */
 .action, .user {
-  color: #333;
-  background: #fff;
+  color: rgb(209, 209, 209);
+  background: rgb(57, 57, 57);
   margin-bottom: 10px;
   border-radius: 2px;
   padding: 20px;
@@ -143,6 +145,10 @@ body:not([data-user-is-mod=true]) .actions-ctn, body:not([data-user-is-admin=tru
   -webkit-transition: padding 0.15s cubic-bezier(0.4,0,0.2,1), margin 0.15s cubic-bezier(0.4,0,0.2,1), box-shadow 0.15s cubic-bezier(0.4,0,0.2,1);
   transition: padding 0.15s cubic-bezier(0.4,0,0.2,1), margin 0.15s cubic-bezier(0.4,0,0.2,1), box-shadow 0.15s cubic-bezier(0.4,0,0.2,1);
   position: relative;
+}
+
+.action > time {
+  color: rgb(209, 209, 209);
 }
 
 .user.compact {
@@ -180,7 +186,7 @@ body:not([data-user-is-mod=true]) .actions-ctn, body:not([data-user-is-admin=tru
     display: block;
 }
 .user .relation {
-    color: #777;
+    color: rgb(204, 204, 204);
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -717,12 +723,41 @@ body:not([data-user-is-mod=true]) .actions-ctn, body:not([data-user-is-admin=tru
 }
 
 nav.navbar:not(.navbar-inverse) {
-  background: #fff;
+  background: rgb(168, 168, 168);
 }
 
 nav.navbar {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: rgb(255, 255, 255);
+}
+
+.navbar-default .navbar-brand {
+    color: rgb(255, 255, 255);
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0); 
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background: rgb(0, 0, 0); 
+    color: rgb(255, 255, 255);
+}
+
+nav.navbar>.open {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    color: rgb(230, 230, 230);
+    background: rgb(24, 24, 24); 
+  }
+
+nav.navbar-default .navbar-nav>.active   {
+    background: rgb(32, 32, 32); 
 }
 
 nav.navbar.navbar-inverse {
@@ -763,9 +798,11 @@ li#nav-auth-link {
 .dropdown-menu {
   border: none;
   font-size: 13.5px;
+  background: rgb(32, 32, 32); 
 }
 .dropdown-menu > li > a {
   padding: 8px 20px;
+  color:rgb(225, 225, 225);
 }
 .dropdown-menu > li > a > i {
   margin-right: 3px;
@@ -805,6 +842,7 @@ table.table.table-contained, td {
   margin: 0;
   padding: 0;
   border: none!important;
+  color:rgb(201, 201, 201);
 }
 
 .btn:not(.btn-popping), .label {

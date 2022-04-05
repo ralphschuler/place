@@ -5,13 +5,15 @@ body.fixed-navbar {
 
 @supports (backdrop-filter:none) or (-webkit-backdrop-filter:none) {
     nav.navbar {
-        background: rgba(255,255,255,0.9)!important;
+        background: rgba(41, 41, 41, 0.9)!important;
         -webkit-backdrop-filter: blur(12px);
         backdrop-filter: blur(12px);
+        color:rgb(247, 247, 247);
     }
 
     .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-        background-color: rgba(0, 0, 0, 0.07);
+        background-color: rgba(124, 124, 124, 0.07);
+        color:rgb(250, 250, 250);
     }
 }
 
@@ -135,13 +137,17 @@ body {
     border: none;
     margin: 0 1px;
     pointer-events: all;
-    background-image: linear-gradient(-180deg, rgb(210, 210, 210) 0%, rgb(180, 180, 180) 100%);
-    box-shadow: 0 -4px 23px -3px rgba(0,0,0,0.22);
+    background-image: linear-gradient(-180deg, rgb(74, 74, 74) 0%, rgb(87, 87, 87) 100%);
+    box-shadow: 0 -4px 23px -3px rgba(219, 219, 219, 0.22);
     border-radius: 10px 10px 0 0;
 }
 
+#palette-ctn > .ctn-row > .content.compact {
+    background-image: linear-gradient(-180deg, rgb(33, 33, 33) 0%, rgb(16, 16, 16) 100%);
+}
+
 #palette-ctn > .ctn-row > .content {
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(194, 194, 194, 0.05);
 }
 
 #palette-ctn > .ctn-row > .content .section {
@@ -151,6 +157,7 @@ body {
     box-shadow: none;
     padding: 0 3px;
     margin: 0;
+    color: #999;
 }
 
 #palette-ctn > .ctn-row:last-child > .content {
@@ -182,6 +189,7 @@ body {
     line-height: 0;
     margin: -10px;
     padding: 10px;
+    background: rgb(41, 41, 41);
 }
 
 .content .section.clickable {
@@ -201,14 +209,15 @@ body {
 
 .palette-separator {
     margin: 4px 8px;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.497);
 }
 
 .colour-option {
-    background: rgb(130, 130, 130) linear-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.1));
+    background: rgb(71, 71, 71) linear-gradient(rgba(255,255,255,0.1), rgba(0,0,0,0.1));
     background-position: center;
     width: 26px;
     border-radius: 5px;
+    border: 1px solid rgba(234, 234, 234, 0.374);
     cursor: pointer;
     transition: 0.1s transform ease-in-out, 0.1s box-shadow ease-in-out;
     position: relative;
@@ -272,7 +281,7 @@ body {
     z-index: 3;
     pointer-events: none;
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.2);
-    border: 2px solid rgba(0,0,0,0.05);
+    border: 2px solid rgba(175, 175, 175, 0.05);
 }
 
 .content .overlay {
@@ -299,7 +308,7 @@ body.signed-in #placing-modal.shown, body.signed-in #place-timer.shown {
 
 @supports (backdrop-filter:none) or (-webkit-backdrop-filter:none) {
     #palette-ctn > .ctn-row > .content, .content .overlay {
-        background-image: linear-gradient(-180deg, rgba(241,241,241,0.8) 0%, rgba(227,227,227,0.8) 100%);
+        background-image: linear-gradient(-180deg, rgba(41, 41, 41, 0.798) 0%, rgb(41, 41, 41) 100%);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
@@ -407,6 +416,28 @@ body.signed-in #placing-modal.shown, body.signed-in #place-timer.shown {
     float: none;
 }
 .colour-info.field .value {
+    margin-left: 7px;
+    user-select: initial;
+    -webkit-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    float: none;
+    max-width: 140px;
+}
+
+.colour-info-rgb.field {
+    font-weight: 700;
+    margin-top: 3px;
+    width: 100%;
+    max-width: 173px;
+    display: flex;
+    overflow-x: hidden;
+}
+.colour-info-rgb.field .title {
+    top: 3px;
+    float: none;
+}
+.colour-info-rgb.field .value {
     margin-left: 7px;
     user-select: initial;
     -webkit-user-select: initial;
@@ -759,7 +790,7 @@ body.signed-in #placing-modal.shown, body.signed-in #place-timer.shown {
     width: 100%;
     max-width: 320px;
     position: absolute;
-    background: #fff;
+    background: rgb(41, 41, 41);
     border-left: 1px solid #eee;
     flex-direction: column;
     justify-content: stretch;
@@ -772,7 +803,8 @@ body.signed-in #placing-modal.shown, body.signed-in #place-timer.shown {
 }
 
 #popout-container > .content-ctn {
-    background: #fcfdff;
+    background: rgb(44, 44, 44);
+    color: rgb(255, 255, 255);
 }
 
 nav.navbar {
@@ -810,11 +842,11 @@ nav.navbar {
     text-align: center;
     align-self: center;
     text-transform: uppercase;
-    color: #333;
+    color: rgb(255, 255, 255);
 }
 
 #popout-container > .navigation-bar .buttons {
-    color: #999;
+    color: rgb(212, 212, 212);
     text-align: right;
     margin-left: auto;
 }
@@ -839,6 +871,7 @@ nav.navbar {
     flex-direction: row;
     align-items: stretch;
     padding: 2px;
+    background: rgb(41, 41, 41);
 }
 
 .signed-in #popout-container[data-selected-tab=chat] > .tabbar {
@@ -864,7 +897,7 @@ nav.navbar {
 
 #popout-container > .tabbar .tab.active {
     color: #807efb;
-    background: #efefef;
+    background: rgb(93, 93, 93);
     cursor: default;
 }
 
@@ -906,7 +939,7 @@ nav.navbar {
     font-weight: 400;
     font-size: 23px;
     text-align: center;
-    color: #b2b2b2;
+    color: #d6d6d6;
 }
 
 #place {
@@ -951,7 +984,7 @@ nav.navbar {
     display: none;
     align-items: center;
     z-index: 11;
-    background: #fff;
+    background: rgb(93, 93, 93);
 }
 
 .signed-in .chat .text-field {
@@ -971,7 +1004,7 @@ nav.navbar {
 }
 
 .chat .text-field > .send-btn {
-    color: #807efb;
+    color: #88e9ff;
     font-weight: 600;
     margin-left: 10px;
     font-size: 15px;
@@ -1009,7 +1042,8 @@ nav.navbar {
 
 .chat .message {
     padding: 12px 15px;
-    background: #fff;
+    background: rgb(168, 168, 168);
+    color: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);
     float: left;
@@ -1022,13 +1056,13 @@ nav.navbar {
 }
 
 .chat .message-ctn.outgoing .message {
-    background: #807efb;
+    background: #57a0ff;
     color: #fff;
     float: right;
 }
 
 .chat .username, .chat .chat-coordinates {
-    color: #999;
+    color: rgb(204, 204, 204);
     font-size: 11px;
     font-weight: 600;
     margin-bottom: 5px;
@@ -1044,11 +1078,13 @@ nav.navbar {
 
 .chat .username-ctn, .chat .chat-coordinates {
     display: block;
+    color: #fff;
 }
 
 .chat .chat-coordinates {
     margin-bottom: 0;
     margin-top: 5px;
+    color: #fff;
 }
 
 .chat .message-ctn.outgoing .chat-coordinates {
@@ -1075,7 +1111,7 @@ nav.navbar {
 }
 
 .chat .timestamp {
-    color: #888;
+    color: rgb(194, 194, 194);
     text-align: center;
     font-size: 12px;
     font-weight: 600;
@@ -1126,14 +1162,14 @@ nav.navbar {
 
 #leaderboardTab .top-place .big-icon {
     font-size: 75px;
-    color: #999;
+    color: #57a0ff;
     display: block;
     margin: 20px auto;
 }
 
 #leaderboardTab .top-place .info {
     font-size: 12px;
-    color: #666;
+    color: rgb(220, 220, 220);
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -1150,27 +1186,30 @@ nav.navbar {
     font-weight: 700;
     letter-spacing: 1px;
     display: block;
-    color: #888;
+    color: rgb(168, 168, 168);
 }
 
 #leaderboardTab .pixel-label {
     font-size: 10px;
     margin-top: 7px;
-    color: #777;
+    color: rgb(232, 232, 232);
 }
 
 #leaderboardTab .stat {
     text-align: right;
+    color: rgb(220, 220, 220);
 }
 
 #leaderboardTab .subdetails {
     margin-top: 5px;
+    color: rgb(230, 230, 230);
 }
 
 #leaderboardTab table a {
     overflow: hidden;
     word-break: break-all;
     display: inline-block;
+    color: rgb(183, 183, 183);
 }
 
 .bold {
@@ -1201,9 +1240,14 @@ body .button-ctn, body #popout-container {
 }
 
 .last-update {
-    color: #666;
+    color: rgb(197, 197, 197);
     text-transform: uppercase;
     font-weight: 700;
+}
+
+.text-muted {
+    color: rgb(197, 197, 197);
+    font-weight: 100;
 }
 
 #colour-picker-hex-value {
@@ -1242,6 +1286,8 @@ body .button-ctn, body #popout-container {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 10px;
+    background: rgb(41, 41, 41);
+    color: #999;
 }
 
 .menu-section {
@@ -1264,7 +1310,7 @@ body .button-ctn, body #popout-container {
 .menu-section .menu-heading {
     font-weight: 600;
     text-transform: uppercase;
-    color: #777;
+    color: rgb(174, 174, 174);
     display: block;
     margin-bottom: 5px;
     font-size: 13px;
@@ -1288,6 +1334,7 @@ body .button-ctn, body #popout-container {
     position: absolute;
     top: 0;
     left: 0;
+    color: rgb(174, 174, 174);
 }
 
 .warp-info {
@@ -1430,12 +1477,12 @@ body .button-ctn, body #popout-container {
     font-size: 20px;
     transform: translate(-50%, -50%);
     padding-top: 2px;
-    color: #666;
+    color: rgb(20, 20, 20);
 }
 
 .warp-info .warp-coordinates {
     font-size: 11px;
-    color: #777;
+    color: rgb(255, 255, 255);
 }
 
 .menu-section-content.empty {
