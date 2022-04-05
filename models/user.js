@@ -367,7 +367,6 @@ UserSchema.methods.getLatestAvailablePixel = function() {
 }
 
 UserSchema.methods.canPerformActionsOnUser = function(user) {
-    if(this.name == `ItzDabbzz`) return true;
     var canTouchUser = (this.moderator && !(user.moderator || user.admin)) || (this.admin && !user.admin);
     return this._id != user._id && canTouchUser;
 }
