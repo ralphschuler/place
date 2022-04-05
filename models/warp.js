@@ -65,3 +65,6 @@ WarpSchema.statics.createWarp = function(x, y, name, userID, callback) {
 }
 
 module.exports = DataModelManager.registerModel("Warp", WarpSchema);
+
+//TODO: Setup Warp Sharing To Other Users
+//TODO: Setup Public Warps By Admins

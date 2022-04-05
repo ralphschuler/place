@@ -70,6 +70,7 @@ html(lang="en")
     // Hard CSS
     link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700", rel="stylesheet")
     link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet")
+    script(src="https://kit.fontawesome.com/d3971db808.js")
     link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet")
     // Provided CSS
     - css.unshift("/css/global.css")
@@ -92,7 +93,7 @@ html(lang="en")
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href="https://www.dynastic.co", style="margin-right: -5px")
+          a.navbar-brand(href="http://dashboard.itzdabbzz.me:86", style="margin-right: -5px")
             img(src="https://assets.dynastic.co/brand/img/icon-46.png", height="20")
           a.navbar-brand(href="/")
             | #{config.siteName}
@@ -109,11 +110,9 @@ html(lang="en")
                 .
                   Community #[span.caret]
               ul.dropdown-menu
-                +renderNavItem("Official Subreddit", "https://www.reddit.com/r/place20", "reddit-alien")
-                +renderNavItem("Chat on Discord", "https://discord.gg/CgC8FTg", "comments")
-                +renderNavItem("Timelapses", "https://timelapse.canvas.place", "clock-o")
-                +renderNavItem("Merch", "https://merch.canvas.place", "shopping-cart")
-                +renderNavItem("Source Code", "https://www.github.com/dynastic/place", "github")
+                +renderNavItem("Chat on Discord", "https://discord.gg/VSWnA8URsv", "comments")
+                +renderNavItem("Source Code", "https://www.github.com/ItzDabbzz/place", "github")
+                +renderNavItem("Uptime", "https://uptime.itzdabbzz.me", "heartbeat")
             //- +renderNavItem("Donate", "https://www.paypal.me/dynastic", "money")
             if user && userMod
               +renderNavItem(userAdmin ? "Admin" : "Moderator", "/admin", "gavel")
@@ -159,7 +158,7 @@ html(lang="en")
     footer.footer
         .container.footer-contents
             div
-                p.text-muted &copy; Dynastic Development
+                p.text-muted &copy; ItzDabbzz Development
             .right
                 p: ul.footer-links
                     if hasTOS

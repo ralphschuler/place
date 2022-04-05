@@ -68,3 +68,16 @@ exports.deleteUser = (req, res, next) => {
         return res.json({success: true});
     }).catch((err) => res.status(400).json({success: false, error: {message: "No user with that ID exists.", code: "user_doesnt_exist"}}));
 };
+
+exports.updateRegular = (req, res, next) => {
+    if(!req.params.userID || req.params.userID == "") return res.status(400).json({success: false, error: {message: "No user ID specified.", code: "bad_request"}});
+    User.findById(req.params.userID).then((user) => {
+        if(!req.user.canPerformActionsOnUser(user)) return res.status(403).json({success: false, error: {message: "You may not perform actions on this user.", code: "access_denied_perms"}});
+        
+        user.regular = !user.regular;
+        user.save();
+        ActionLogger.log(req.place, "updateRegular", req.user, user);
+        
+        return res.json({success: true});
+    }).catch((err) => res.status(400).json({success: false, error: {message: "No user with that ID exists.", code: "user_doesnt_exist"}}));
+}

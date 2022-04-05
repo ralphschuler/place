@@ -125,6 +125,12 @@ var actions = {
             btnStyle: "success",
             adminOnly: true,
             buttonText: (data) => `${data.moderator ? "Remove" : "Give"} Moderator`
+        },
+        regular: {
+            url: "admin/toggle_reg",
+            btnStyle: "success",
+            adminOnly: true,
+            buttonText: (data) => `${data.moderator ? "Remove" : "Give"} Regular`
         }
     },
     server: {
