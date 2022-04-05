@@ -1,0 +1,40 @@
+extends layout
+mixin renderAdminNavItem(name, itemPath)
+    - var isCurrentPage = itemPath == path;
+    li(class=(isCurrentPage ? "active": ""))
+        a(href=itemPath)
+            .
+                #{name}
+            if isCurrentPage
+                span.sr-only (current)
+block dependencies
+- if(typeof user === "undefined") user = null;
+- if(typeof css === "undefined") css = [];
+- if(typeof pageTitle === "undefined") pageTitle = null;
+- if(typeof pageDesc === "undefined") pageDesc = null;
+- if(typeof overrideNavPath === "undefined") overrideNavPath = null;
+- if(typeof isAdmin === "undefined") isAdmin = false;
+- if(typeof pinnable === "undefined") pinnable = false;
+- if(typeof navbarSupportsTopMode === "undefined") navbarSupportsTopMode = false;
+- if(typeof isPoppedOut === "undefined") isPoppedOut = false;
+- var userAdmin = user ? user.admin : false, userMod = user ? user.moderator || userAdmin : false, userReg = user ? user.regular || userAdmin : false;
+- if(typeof needsHelp === "undefined") needsHelp = false;
+- var resourceVersion = "10"; // Increment this when you make a change to the HTML that absolutely requires CSS or JS refreshing
+- css = resources.css.concat(css);
+- var bodyClasses = ["fixed-navbar"];
+- if (user) bodyClasses.push("signed-in");
+- if (isPoppedOut) bodyClasses.push("is-popped-out");
+block content
+    .container-fluid
+        .row
+            .col-sm-3.col-md-2.sidebar
+                ul.nav.nav-sidebar
+                    +renderAdminNavItem("Dashboard", "/admin/")
+                    +renderAdminNavItem("Recent Actions", "/admin/actions")
+                    +renderAdminNavItem("Moderator Log", "/admin/log")
+                ul.nav.nav-sidebar
+                    +renderAdminNavItem("Users", "/admin/users")
+                    +renderAdminNavItem("Reports", "/admin/reports")
+                    +renderAdminNavItem("Pixels", "/admin/pixels")
+            .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+                block communityContent

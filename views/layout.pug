@@ -8,7 +8,7 @@ block dependencies
 - if(typeof pinnable === "undefined") pinnable = false;
 - if(typeof navbarSupportsTopMode === "undefined") navbarSupportsTopMode = false;
 - if(typeof isPoppedOut === "undefined") isPoppedOut = false;
-- var userAdmin = user ? user.admin : false, userMod = user ? user.moderator || userAdmin : false;
+- var userAdmin = user ? user.admin : false, userMod = user ? user.moderator || userAdmin : false, userReg = user ? user.regular || userAdmin : false;
 - if(typeof needsHelp === "undefined") needsHelp = false;
 - var resourceVersion = "10"; // Increment this when you make a change to the HTML that absolutely requires CSS or JS refreshing
 - css = resources.css.concat(css);
@@ -82,7 +82,7 @@ html(lang="en")
       script(src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js")
       script(src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js")
     <![endif]-->
-  body(class=bodyClasses, data-user-is-mod=(userMod ? "true" : "false"), data-user-is-admin=(userAdmin ? "true" : "false"), data-user-id=(user ? user.id : ""))
+  body(class=bodyClasses, data-user-is-mod=(userMod ? "true" : "false"), data-user-is-reg=(userReg ? "true" : "false"), data-user-is-admin=(userAdmin ? "true" : "false"), data-user-id=(user ? user.id : ""))
     +getViewExtensions("body")
     nav#page-nav(class=`navbar navbar-default navbar-fixed-top${isAdmin ? " navbar-inverse" : ""}${navbarSupportsTopMode ? " supports-top" : ""}`)
       .container
