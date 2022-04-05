@@ -116,6 +116,20 @@ var actions = {
         requiresModerator: true,
         isPrivileged: true
     },
+    giveRegular: {
+        displayName: "Give Regular",
+        inlineDisplayName: "Gave Regular to",
+        category: "administrative",
+        requiresModerator: true,
+        isPrivileged: true
+    },
+    removeRegular: {
+        displayName: "Remove Regular",
+        inlineDisplayName: "Removed Regular from",
+        category: "administrative",
+        requiresModerator: true,
+        isPrivileged: true
+    },
     reloadConfig: {
         displayName: "Reload site configuration",
         inlineDisplayName: "Reloaded site configuration",

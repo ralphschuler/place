@@ -57,6 +57,25 @@ exports.postAPIToggleModerator = (req, res, next) => {
     });
 };
 
+exports.postAPIToggleRegular = (req, res, next) => {
+    if(!req.query.id) return res.status(400).json({success: false, error: {message: "No user ID specified.", code: "bad_request"}});
+    if(req.query.id == req.user.id) return res.status(400).json({success: false, error: {message: "You may not change your own regular status.", code: "cant_modify_self"}});
+    User.findById(req.query.id).then((user) => {
+        if(!req.user.canPerformActionsOnUser(user)) return res.status(403).json({success: false, error: {message: "You may not perform actions on this user.", code: "access_denied_perms"}});
+        user.regular = !user.regular;
+        user.save().then((user) => {
+            ActionLogger.log(req.place, user.regular ? "giveRegular" : "removeRegular", user, req.user);
+            res.json({success: true, user: user.toInfo()})
+        }).catch((err) => {
+            req.place.reportError("Error trying to save regular status on user: " + err);
+            res.status(500).json({success: false});
+        });
+    }).catch((err) => {
+        req.place.reportError("Error trying to get user to set regular status on: " + err);
+        res.status(500).json({success: false})
+    });
+};
+
 exports.postAPIToggleBan = (req, res, next) => {
     if(!req.query.id) return res.status(400).json({success: false, error: {message: "No user ID specified.", code: "bad_request"}});
     if(req.query.id == req.user.id) return res.status(400).json({success: false, error: {message: "You may not ban yourself.", code: "cant_modify_self"}});

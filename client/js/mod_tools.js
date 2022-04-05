@@ -130,7 +130,7 @@ var actions = {
             url: "admin/toggle_reg",
             btnStyle: "success",
             adminOnly: true,
-            buttonText: (data) => `${data.moderator ? "Remove" : "Give"} Regular`
+            buttonText: (data) => `${data.regular ? "Remove" : "Give"} Regular`
         }
     },
     server: {
