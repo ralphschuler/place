@@ -64,7 +64,10 @@ PixelSchema.methods.toInfo = function(userIDs = true) {
             y: this.yPos
         },
         modified: this.lastModified,
-        colour: this.getHexColour()
+        colour: this.getHexColour(),
+        R: this.colourR, 
+        G: this.colourG,
+        B: this.colourB
     };
     if (userIDs) info.editorID = this.editorID;
     return info;

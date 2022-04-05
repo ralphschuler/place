@@ -1069,6 +1069,15 @@ var place = {
                 if(this.canPlaceCustomColours) popover.find(".pixel-colour").addClass("allow-use");
                 else popover.find(".pixel-colour").removeClass("allow-use");
                 popover.find(".rank-container > *").remove();
+                
+                popover.find("#pixel-colour-code-rgb").text(`#${data.pixel.R}, ${data.pixel.G}, ${data.pixel.B}`);
+                popover.find("#pixel-colour-preview-rgb").css("background-color", `#${data.pixel.colour}`);
+                if(data.pixel.colour.toLowerCase() == "ffffff") popover.find("#pixel-colour-preview-rgb").addClass("is-white");
+                else popover.find("#pixel-colour-preview-rgb").removeClass("is-white");
+                popover.find("#pixel-use-colour-btn").attr("data-represented-colour", data.pixel.colour);
+                if(this.canPlaceCustomColours) popover.find(".pixel-colour").addClass("allow-use");
+                else popover.find(".pixel-colour").removeClass("allow-use");
+
                 if(hasUser) {
                     var userInfoCtn = popover.find(".user-info");
                     userInfoCtn.show();
