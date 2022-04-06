@@ -7,7 +7,6 @@ const Access = require("./access");
 const dataTables = require("mongoose-datatables");
 const TOSManager = require("../util/TOSManager");
 const achievements = require("../config/achievements");
-const AchievementsController = require("../controllers/AchievementsController");
 
 var UserSchema = new Schema({
     name: {
