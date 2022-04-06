@@ -6,6 +6,8 @@ const Pixel = require("./pixel");
 const Access = require("./access");
 const dataTables = require("mongoose-datatables");
 const TOSManager = require("../util/TOSManager");
+const achievements = require("../config/achievements");
+const AchievementsController = require("../controllers/AchievementsController");
 
 var UserSchema = new Schema({
     name: {
@@ -110,6 +112,10 @@ var UserSchema = new Schema({
     deletionDate: {
         type: Date,
         required: false
+    },
+    achievements: {
+        type: [String],
+        required: false,
     }
 });
 
@@ -152,7 +158,8 @@ UserSchema.methods.toInfo = function(app = null) {
         banned: this.banned,
         deactivated: this.deactivated,
         markedForDeletion: this.isMarkedForDeletion(),
-        badges: this.getBadges(app)
+        badges: this.getBadges(app),
+        achievements: this.getAchievements(),
     };
     if (app) {
         info.statistics.placesThisWeek = app.leaderboardManager.pixelCounts[this.id];
@@ -231,6 +238,7 @@ UserSchema.statics.findByUsername = function(username, callback = null) {
         }
     }, callback)
 }
+
 
 UserSchema.statics.getPasswordError = function(password) {
     return null; // temp fix signups, not good
@@ -533,5 +541,12 @@ UserSchema.methods.getUserData = function() {
         });
     });
 }
+
+UserSchema.methods.getAchievements = function() {
+    const userAchievements = achievements.filter(achievement => achievement.meetsCriteria(this));
+    return userAchievements
+
+}
+
 
 module.exports = DataModelManager.registerModel("User", UserSchema);

@@ -227,3 +227,8 @@ nav.navbar:not(.navbar-inverse) {
 .footer {
   z-index: 50;
 }
+
+.list-group-item {
+  background-color: #1c1c1c;
+  color:rgb(190, 190, 190);
+}

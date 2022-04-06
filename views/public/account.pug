@@ -12,6 +12,7 @@ block dependencies
     - jsModSnippets = [`  $(document).ready(function() {
     -    $("#profile-mod-tools-ctn").html(renderUserActions(${JSON.stringify(profileUser)}));
     -  });`];
+    - var icon = function(icon){ return '<i class="fa fa-' + icon + '"></i>'; };
 block content
     - var has2FA = profileUser.twoFactorAuthEnabled();
     if pixel
@@ -58,6 +59,14 @@ block content
                             a(href=`/#x=${pixel.point.x}&y=${pixel.point.y}`) (#{pixel.point.x.toLocaleString()}, #{pixel.point.y.toLocaleString()})
                         . 
                             .
+                if profileUserInfo.achievements !== null 
+                    .list-group.list-group
+                    p #[strong Achievements] #{profileUserInfo.achievements.length < 0 ? "0 Achievements" : profileUserInfo.achievements.length + " Achievements"}
+                    each ach in profileUserInfo.achievements
+                        .list-group-item
+                            #{icon(ach.imageURL)} - #{ach.name} ( #{ach.description} )
+                    else
+                        li No achievements earned
             //- Disable this section for OAuth users because they cannot deactivate or change passwords at this time.
             if user && user.admin
                 hr
