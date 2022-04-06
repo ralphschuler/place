@@ -117,10 +117,10 @@ body:not([data-user-is-mod=true]) .actions-ctn, body:not([data-user-is-admin=tru
 
 .dropdown-inline {
   display: inline-block;
-  margin-left: -3px;
-  margin-right: 1px;
+  margin-left: -1px;
+  margin-right: 45px;
   color: rgb(174, 174, 174);
-  background: rgb(41, 41, 41);
+  background: rgb(57, 57, 57);
 }
 
 .dropdown-inline span.caret {
@@ -128,12 +128,11 @@ body:not([data-user-is-mod=true]) .actions-ctn, body:not([data-user-is-admin=tru
 }
 
 .dropdown-inline a.dropdown-toggle {
-  padding: 5px;
-  margin-left: -3px;
+  padding: 1px;
+  margin-left: 5px;
   margin-right: -5px;
-  background: rgb(41, 41, 41);
+  background: rgb(57, 57, 57);
 }
-
 /* User Display Block */
 .action, .user {
   color: rgb(209, 209, 209);

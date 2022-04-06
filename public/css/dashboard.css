@@ -58,7 +58,7 @@ body {
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
-  color: #009ef7;
+  color: #c7c7c7;
   transition: 0.15s box-shadow ease-in-out;
   position: relative;
   z-index: 21;
@@ -73,7 +73,7 @@ body {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   background: rgb(41, 41, 41);
-  background-color: #009ef7;
+  background-color: #3b3b3b;
   margin-right: -4px;
   padding-right: 4px;
   box-shadow: 0 2px 12px 1px rgba(0,0,0,0.18);
@@ -210,4 +210,9 @@ table.filters {
   color: #777;
   font-size: 12px;
   margin-top: 0;
+}
+
+table.table.table-contained, td {
+  background: rgb(41, 41, 41);
+
 }
