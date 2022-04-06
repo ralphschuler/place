@@ -75,6 +75,7 @@
     "passport-microsoft": "^0.0.5",
     "passport-reddit": "^0.2.4",
     "passport-steam": "^1.0.17",
+    "passport-twitch": "^1.0.3",
     "passport-twitter": "^1.0.4",
     "pug": "^2.0.0-rc.3",
     "pump": "^1.0.2",

@@ -47,6 +47,11 @@ function OAuthRouter(app) {
             router.get("/steam/callback", passport.authenticate("steam", { successRedirect: "/?signedin=1", failureRedirect: "/signup" }));
         }
 
+        if (app.config.oauth.twitch.enabled) {
+            router.get('/twitch', passport.authenticate("twitch"));
+            router.get("/twitch/callback", passport.authenticate("twitch", { successRedirect: "/?signedin=1", failureRedirect: "/signup" }));
+        }
+
         if (app.config.oauth.dynastic && app.config.oauth.dynastic.enabled) {
             router.get('/dynastic', passport.authenticate("dynastic", { state: "auth" }));
             router.get("/dynastic/callback", passport.authenticate("dynastic", { successRedirect: "/?signedin=1", failureRedirect: "/signup" }));

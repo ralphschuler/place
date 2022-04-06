@@ -120,7 +120,6 @@ mongoose.connection.once('connected', () => {
 // Process JS
 app.javascriptProcessor = new JavaScriptProcessor(app);
 app.javascriptProcessor.processJavaScript();
-
 app.stopServer = () => {
     if(app.server.listening) {
         app.logger.log('Shutdown', "Closing server…")

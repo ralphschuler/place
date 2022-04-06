@@ -9,7 +9,8 @@ const JwtStrategy = require("passport-jwt").Strategy,
     FacebookStrategy = require("passport-facebook").Strategy,
     DynasticStrategy = require("dynastic-provider").Strategy,
     MicrosoftStrategy = require("passport-microsoft").Strategy,
-    SteamStrategy = require("passport-steam").Strategy;
+    SteamStrategy = require("passport-steam").Strategy,
+    twitchStrategy = require("passport-twitch").Strategy;
 
 // Get user model
 const User = require("../models/user");
@@ -103,6 +104,17 @@ module.exports = function(passport, app) {
                 callbackURL: config.host + "/auth/github/callback"
             }, function(accessToken, refreshToken, profile, done) {
                 OAuthLogin("github", profile.username, profile.id, done);
+            }));
+        }
+
+        if (config.oauth.twitch.enabled) {
+            passport.use(new twitchStrategy({
+                clientID: config.oauth.twitch.clientID,
+                clientSecret: config.oauth.twitch.clientSecret,
+                callbackURL: "http://127.0.0.1:3000/auth/twitch/callback",
+                scope: "user_read"
+            }, function(accessToken, refreshToken, profile, done) {
+                OAuthLogin("twitch", profile.username, profile.id, done);
             }));
         }
 
