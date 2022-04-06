@@ -74,7 +74,9 @@ exports.postSignUp = (req, res, next) => {
 
 exports.getSignOut = (req, res, next) => {
     ActionLogger.log(req.place, "signOut", req.user);
+    //req._passport.session = null
     req.logout();
+    req.user = null
     req.session = null;
     var redirectURL = typeof req.query.redirectURL !== "undefined" ? req.query.redirectURL : null;
     var shouldUseRedirect = redirectURL && redirectURL != "/" && !absoluteURLRegex.test(redirectURL);

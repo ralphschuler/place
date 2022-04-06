@@ -18,3 +18,5 @@ if typeof config.oauth !== "undefined"
             a.btn.btn-popping.btn-popping-alt.btn-oauth.btn-oauth-facebook(href="/auth/facebook", title="Sign in with Facebook"): span.fa.fa-facebook
         if config.oauth.microsoft.enabled
             a.btn.btn-popping.btn-popping-alt.btn-oauth.btn-oauth-microsoft(href="/auth/microsoft", title="Sign in with Microsoft account"): span.fa.fa-windows
+        if config.oauth.steam.enabled
+            a.btn.btn-popping.btn-popping-alt.btn-oauth.btn-oauth-microsoft(href="/auth/steam", title="Sign in with Steam account"): span.fa.fa-steam

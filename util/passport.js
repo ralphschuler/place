@@ -8,7 +8,8 @@ const JwtStrategy = require("passport-jwt").Strategy,
     GithubStrategy = require("passport-github").Strategy,
     FacebookStrategy = require("passport-facebook").Strategy,
     DynasticStrategy = require("dynastic-provider").Strategy,
-    MicrosoftStrategy = require("passport-microsoft").Strategy;
+    MicrosoftStrategy = require("passport-microsoft").Strategy,
+    SteamStrategy = require("passport-steam").Strategy;
 
 // Get user model
 const User = require("../models/user");
@@ -40,7 +41,7 @@ module.exports = function(passport, app) {
                 // Don't allow Oauth logins from normal login area.
                 if(user.isOauth === true) return rejectCredentials();
                 if (user.loginError()) return done(null, false, { error: user.loginError() });
-              
+            
                 if(user.passwordResetKey) {
                     if(user.passwordResetKey == password) return done(null, user);
                 } else {
@@ -67,7 +68,7 @@ module.exports = function(passport, app) {
                 return done(null, user);
             }
             // Even though we don't use the password field, it's better to set it to *SOMETHING* unique
-            User.register(prefix + "_" + id + "-" + Math.floor(Math.random() * 1000000), prefix + "_" + id, app, function(user, error) {
+            User.register(prefix + "_" + name + "-" + Math.floor(Math.random() * 1000000), prefix + "_" + id, app, function(user, error) {
                 if(!user) return done(null, false, error);
                 done(null, user);
             }, prefix + "_" + id, name);
@@ -102,6 +103,17 @@ module.exports = function(passport, app) {
                 callbackURL: config.host + "/auth/github/callback"
             }, function(accessToken, refreshToken, profile, done) {
                 OAuthLogin("github", profile.username, profile.id, done);
+            }));
+        }
+
+        if (config.oauth.steam.enabled) {
+            passport.use(new SteamStrategy({
+                returnURL: config.host + "/auth/steam/callback",
+                realm: config.host,
+                apiKey: config.oauth.steam.key
+            }, function(identifier, profile, done) {
+                console.log(profile._json.personaname);
+                OAuthLogin("steam", profile._json['personaname'], profile._json.steamid, done);
             }));
         }
 

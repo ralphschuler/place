@@ -53,7 +53,10 @@ function HTTPServer(app) {
         // Setup passport for auth
         server.use(session({
             secret: app.config.secret,
-            name: "session"
+            name: "session",
+            saveUninitialized: true,
+            resave: false,
+            cookie: { secureProxy: true, httpOnly: true }
         }));
 
         server.use(function (req, res, next) {
