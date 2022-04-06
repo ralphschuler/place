@@ -4,7 +4,7 @@ const ActionLogger = require("../util/ActionLogger");
 const fs = require("fs");
 const path = require("path");
 
-const regenerationInterval = 30; // in seconds
+const regenerationInterval = 15; // in seconds
 
 function PaintingManager(app) {
     const imageSize = app.config.boardSize;
