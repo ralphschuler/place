@@ -56,7 +56,7 @@ function HTTPServer(app) {
             name: "session",
             saveUninitialized: true,
             resave: false,
-            cookie: { secureProxy: true, httpOnly: true }
+            cookie: { secureProxy: true, httpOnly: false }
         }));
 
         server.use(function (req, res, next) {
