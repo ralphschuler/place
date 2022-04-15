@@ -38,7 +38,7 @@ function AdminRouter(app) {
     });
 
     router.get("/pixels", app.modMiddleware, function(req, res) {
-        req.responseFactory.sendRenderedResponse("admin/coming_soon");
+        req.responseFactory.sendRenderedResponse("admin/testing");
     });
 
     router.get("/reports", app.modMiddleware, function(req, res) {
