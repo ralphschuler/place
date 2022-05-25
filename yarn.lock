@@ -1481,9 +1481,10 @@ cached-path-relative@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/cached-path-relative/-/cached-path-relative-1.0.2.tgz#a13df4196d26776220cc3356eb147a52dba2c6db"
 
-"cachet-api@github:applebetas/cachet-api":
-  version "1.0.3"
-  resolved "https://codeload.github.com/applebetas/cachet-api/tar.gz/48b47541c1553d51e629dc92c1898e95ea82ccd6"
+cachet-api@1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/cachet-api/-/cachet-api-1.0.10.tgz#fbb9b602e2cb24489712fe6861ff92128d08ee96"
+  integrity sha512-PC8EbhdufBXyW4s5BsTNysYMU1Tsc1iiFGM2ZXSIJOutUkXYVm/FNNVxckMGIKAdsaZZs0A96RIMkSTJcbsRKA==
   dependencies:
     bluebird "^3.4.0"
     request "^2.72.0"
