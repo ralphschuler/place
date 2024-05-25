@@ -34,7 +34,7 @@
     "cachet-api": "github:applebetas/cachet-api",
     "cookie-session": "^2.0.0-beta.1",
     "csurf": "^1.9.0",
-    "del": "^2.2.2",
+    "del": "^6.0.0",
     "dynastic-provider": "dynastic/accounts-provider.git",
     "express": "^4.15.2",
     "express-brute-mongoose": "0.0.8",
